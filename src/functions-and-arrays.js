@@ -155,10 +155,16 @@ function uniquifyArray(wordsUnique) {
   if (wordsUnique.length === 0) {
     return null;
   } else {
+    let indices = [];
     let uniqueArr = [];
     for (let x = 0; x < wordsUnique.length; x++) {
-      wordsUnique.indexOf(wordsUnique[x]);
-      if ()
+      let idx = wordsUnique.indexOf(wordsUnique[x]);
+      indices.push(idx);
+      idx = wordsUnique.indexOf(wordsUnique[x], idx + 1);
+      if (indices.length === 1) {
+        uniqueArr.push(wordsUnique[x]);
+      }
+      return uniqueArr;
     }
   }
 }
@@ -166,7 +172,20 @@ function uniquifyArray(wordsUnique) {
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordsFind, name) {
+  if (wordsFind.length === 0) {
+    return null;
+  }
+  if (wordsFind.length === 1 && wordsFind.includes(name)) {
+    return true;
+  }
+  if (wordsFind.length > 1 && wordsFind.includes(name)) {
+    return true;
+  }
+  if (!wordsFind.includes(name)) {
+    return false;
+  }
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -183,7 +202,21 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordsCount, name) {
+  let howMany = [];
+  if (wordsCount.length === 0) {
+    return 0;
+  } else if (!wordsCount.includes(name)) {
+    return 0;
+  } else if (wordsCount.includes(name)) {
+    for (let z = 0; z < wordsCount.length; z++) {
+      if (wordsCount[z] === name) {
+        howMany.push(wordsCount.indexOf(wordsCount[z]));
+      }
+    }
+  }
+  return howMany.length;
+}
 
 // Iteration #8: Bonus
 const matrix = [
